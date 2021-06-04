@@ -1,8 +1,26 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { darken, lighten } from 'polished';
 
+const colorStyles = css`
+  /* 색상 */
+  ${({ theme, color }) => {
+    const selected = theme.palette[color];
+
+    return css`
+      background: ${selected};
+      &:hover {
+        background: ${lighten(0.1, selected)};
+      }
+      &:active {
+        background: ${darken(0.1, selected)};
+      }
+    `;
+  }}
+`;
+
 const StyledButton = styled.button`
+  /* 공통 */
   display: inline-block;
   outline: none;
   border: none;
@@ -13,24 +31,28 @@ const StyledButton = styled.button`
   padding-left: 1rem;
   padding-right: 1rem;
 
+  /* 크기 */
   height: 2.25rem;
   font-size: 1rem;
 
-  background: #228be6;
-  &:hover {
-    background: ${lighten(0.1, '#228be6')};
-  }
-  &:active {
-    background: ${darken(0.1, '#228be6')};
-  }
-
+  ${colorStyles}
+  
+  /* 기타 */
   & + & {
     margin-left: 1rem;
   }
 `;
 
-function Button({ children, ...rest }) {
-  return <StyledButton {...rest}>{children}</StyledButton>;
+function Button({ children, color, ...rest }) {
+  return (
+    <StyledButton color={color} {...rest}>
+      {children}
+    </StyledButton>
+  );
 }
+
+Button.defaultProps = {
+  color: 'blue'
+};
 
 export default Button;
