@@ -52,14 +52,14 @@ const sizeStyles = css`
 `;
 
 const fullWidthStyle = css`
-  ${props => props.fullWidth && css`
-    width: 100%;
-    justify-content: center;
-    & + & {
-      margin-left: 0;
-      margin-top: 1rem;
-    }
-  `}
+  ${props => props.fullWidth && 
+    css`
+      width: 100%;
+      justify-content: center;
+      & + & {
+        margin-left: 0%;
+      }
+    `}
 `;
 
 const StyledButton = styled.button`
@@ -99,7 +99,8 @@ function Button({ children, color, size, outline, fullWidth, ...rest }) {
 
 Button.defaultProps = {
   color: 'blue',
-  size: 'medium'
+  size: 'medium',
+  fullWidth: false,
 };
 
 export default Button;

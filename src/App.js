@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled, { css, ThemeProvider } from 'styled-components';
 import Button from './components/Button';
+import Dialog from './components/Dialog';
 
 const AppBlock = styled.div`
   width: 512px;
@@ -36,6 +37,21 @@ const palette = {
 };
 
 function App() {
+  const [dialog, setDialog] = useState(false);
+  const onClick = () => {
+    setDialog(true);
+  }
+
+  const onConfirm = () => {
+    console.log('확인');
+    setDialog(false);
+  }
+
+  const onCancel = () => {
+    console.log('취소');
+    setDialog(false);
+  }
+
   return (
     <ThemeProvider 
       theme={{
@@ -43,7 +59,6 @@ function App() {
       }}
     >
       <AppBlock>
-        
         <h3>Circle Color, Huge</h3>
         <Circle color="blue" />
         <Circle color="blue" huge />
@@ -93,7 +108,21 @@ function App() {
           <Button color="pink" size="large" fullWidth>BUTTON</Button>
         </ButtonGroup>
 
+        <h3>Dialog</h3>
+        <Button color="pink" size="large" onClick={onClick}>삭제</Button>
+        
       </AppBlock>
+      
+      <Dialog 
+          title="정말로 삭제하시겠습니까?"
+          confirmText="삭제"
+          cancelText="취소"
+          onConfirm={onConfirm}
+          onCancel={onCancel}
+          visible={dialog}
+        >
+          데이터를 정말로 삭제하시겠습니까?
+      </Dialog>
     </ThemeProvider>
   );
 }
