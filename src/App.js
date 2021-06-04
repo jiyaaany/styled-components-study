@@ -10,6 +10,12 @@ const AppBlock = styled.div`
   padding: 1rem;
 `;
 
+const ButtonGroup = styled.div`
+  & + & {
+    margin-top: 1rem;
+  }
+`;
+
 const Circle = styled.div`
   width: 5rem;
   height: 5rem;
@@ -37,11 +43,28 @@ function App() {
       }}
     >
       <AppBlock>
+        <h3>Circle Color, Huge</h3>
         <Circle color="blue" />
         <Circle color="blue" huge />
-        <Button>BUTTON</Button>
-        <Button color="gray">BUTTON</Button>
-        <Button color="pink">BUTTON</Button>
+        
+        <h3>Button Size, Color</h3>
+        <ButtonGroup>
+          <Button size="large">BUTTON</Button>
+          <Button>BUTTON</Button>
+          <Button size="small">BUTTON</Button>
+        </ButtonGroup>
+
+        <ButtonGroup>
+          <Button color="gray" size="large">BUTTON</Button>
+          <Button color="gray">BUTTON</Button>
+          <Button color="gray" size="small">BUTTON</Button>
+        </ButtonGroup>
+
+        <ButtonGroup>
+          <Button color="pink" size="large">BUTTON</Button>
+          <Button color="pink">BUTTON</Button>
+          <Button color="pink" size="small">BUTTON</Button>
+        </ButtonGroup>
       </AppBlock>
     </ThemeProvider>
   );
