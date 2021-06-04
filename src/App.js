@@ -43,6 +43,7 @@ function App() {
       }}
     >
       <AppBlock>
+        
         <h3>Circle Color, Huge</h3>
         <Circle color="blue" />
         <Circle color="blue" huge />
@@ -84,6 +85,14 @@ function App() {
           <Button color="pink" outline>BUTTON</Button>
           <Button color="pink" size="small" outline>BUTTON</Button>
         </ButtonGroup>
+
+        <h3>Button FullWidth</h3>
+        <ButtonGroup>
+          <Button size="large" fullWidth>BUTTON</Button>
+          <Button color="gray" size="large" fullWidth>BUTTON</Button>
+          <Button color="pink" size="large" fullWidth>BUTTON</Button>
+        </ButtonGroup>
+
       </AppBlock>
     </ThemeProvider>
   );

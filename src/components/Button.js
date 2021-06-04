@@ -51,6 +51,17 @@ const sizeStyles = css`
   `}
 `;
 
+const fullWidthStyle = css`
+  ${props => props.fullWidth && css`
+    width: 100%;
+    justify-content: center;
+    & + & {
+      margin-left: 0;
+      margin-top: 1rem;
+    }
+  `}
+`;
+
 const StyledButton = styled.button`
   /* 공통 */
   display: inline-block;
@@ -63,21 +74,24 @@ const StyledButton = styled.button`
   padding-left: 1rem;
   padding-right: 1rem;
 
+  /* 기타 */
+  & + & {
+    margin-left: 1rem;
+  }
+
   /* 크기 */
   ${sizeStyles}
 
   /* 색상 */
   ${colorStyles}
 
-  /* 기타 */
-  & + & {
-    margin-left: 1rem;
-  }
+  /* 너비 */
+  ${fullWidthStyle}
 `;
 
-function Button({ children, color, size, outline, ...rest }) {
+function Button({ children, color, size, outline, fullWidth, ...rest }) {
   return (
-    <StyledButton color={color} size={size} outline={outline} {...rest}>
+    <StyledButton color={color} size={size} outline={outline} fullWidth={fullWidth} {...rest}>
       {children}
     </StyledButton>
   );
